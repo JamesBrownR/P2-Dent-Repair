@@ -464,40 +464,76 @@
     margin-top: 40px;
   }
   
-  /* Responsive Design */
-  @media (max-width: 1024px) {
+  /* Desktop Layout - Keep header content side by side */
+  @media (min-width: 1025px) {
+    .header-content {
+      flex-direction: row;
+    }
+    
+    .brand {
+      flex-direction: row;
+    }
+    
+    .contact-header {
+      text-align: right;
+    }
+    
+    main {
+      grid-template-columns: 1fr 380px;
+    }
+  }
+  
+  /* Tablet Layout */
+  @media (max-width: 1024px) and (min-width: 769px) {
     main {
       grid-template-columns: 1fr;
     }
     
+    .header-content {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .brand {
+      flex-direction: row;
+    }
+    
+    .contact-header {
+      text-align: right;
+    }
+  }
+  
+  /* Mobile Optimization */
+  @media (max-width: 768px) {
+    .container {
+      padding: 16px;
+    }
+    
+    header {
+      padding: 20px 16px;
+      margin-bottom: 20px;
+    }
+    
+    /* Mobile Header - Stack vertically */
     .header-content {
       flex-direction: column;
       gap: 20px;
       text-align: center;
     }
     
-    .contact-header {
-      text-align: center;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .container {
-      padding: 12px;
-    }
-    
-    header {
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-    
     .brand {
-      flex-direction: column;
-      gap: 12px;
+      flex-direction: row;
+      justify-content: center;
+      gap: 16px;
     }
     
     .brand-text h1 {
       font-size: 24px;
+    }
+    
+    .brand-text .tagline {
+      font-size: 13px;
     }
     
     .logo {
@@ -506,31 +542,210 @@
       font-size: 16px;
     }
     
+    .contact-header {
+      text-align: center;
+    }
+    
+    .call-button {
+      width: 100%;
+      max-width: 280px;
+      justify-content: center;
+      padding: 16px 20px;
+    }
+    
+    .call-button .call-text {
+      align-items: center;
+    }
+    
+    .hours-badge {
+      margin-top: 12px;
+      display: inline-block;
+    }
+    
+    /* Mobile Main Content */
+    main {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .card {
+      padding: 20px;
+    }
+    
     .services {
       grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    
+    .service {
+      padding: 16px;
+      text-align: left;
     }
     
     .photos {
       grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    
+    .photos img {
+      height: 120px;
     }
     
     .hours-grid {
       grid-template-columns: 1fr;
     }
+    
+    /* Mobile Reviews */
+    .review {
+      padding: 16px;
+    }
+    
+    .review-header {
+      gap: 12px;
+    }
+    
+    .review-avatar {
+      width: 45px;
+      height: 45px;
+      font-size: 14px;
+    }
+    
+    /* Mobile Form */
+    .contact-form {
+      padding: 20px;
+    }
+    
+    .form-input {
+      padding: 14px 16px;
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .submit-button {
+      padding: 16px 24px;
+      font-size: 16px;
+    }
   }
   
+  /* Small Mobile Devices */
   @media (max-width: 480px) {
-    .photos {
-      grid-template-columns: 1fr;
+    .container {
+      padding: 12px;
+    }
+    
+    header {
+      padding: 16px 12px;
+    }
+    
+    .brand {
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .brand-text h1 {
+      font-size: 22px;
+    }
+    
+    .logo {
+      width: 50px;
+      height: 50px;
+      font-size: 14px;
     }
     
     .call-button {
-      padding: 12px 16px;
+      padding: 14px 16px;
       font-size: 14px;
+      flex-direction: column;
+      gap: 4px;
+    }
+    
+    .call-button .phone-icon {
+      font-size: 16px;
+    }
+    
+    .call-button .call-text {
+      align-items: center;
     }
     
     .card {
       padding: 16px;
+    }
+    
+    .photos {
+      grid-template-columns: 1fr;
+    }
+    
+    .photos img {
+      height: 160px;
+    }
+    
+    .services {
+      grid-template-columns: 1fr;
+    }
+    
+    .service {
+      padding: 14px;
+      text-align: center;
+    }
+    
+    .map-container iframe {
+      height: 300px;
+    }
+    
+    /* Smaller form elements for very small screens */
+    .form-input {
+      padding: 12px 14px;
+    }
+    
+    .submit-button {
+      padding: 14px 20px;
+      font-size: 15px;
+    }
+  }
+  
+  /* Very Small Devices */
+  @media (max-width: 360px) {
+    .container {
+      padding: 8px;
+    }
+    
+    .card {
+      padding: 12px;
+    }
+    
+    .brand-text h1 {
+      font-size: 20px;
+    }
+    
+    .call-button {
+      padding: 12px 14px;
+      font-size: 13px;
+    }
+    
+    .map-container iframe {
+      height: 250px;
+    }
+  }
+  
+  /* Touch-friendly improvements for mobile */
+  @media (hover: none) and (pointer: coarse) {
+    .call-button,
+    .submit-button,
+    .show-more-btn {
+      min-height: 44px; /* iOS accessibility guideline */
+    }
+    
+    .form-input,
+    .form-textarea {
+      min-height: 44px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    .card:hover,
+    .service:hover,
+    .photos img:hover,
+    .review:hover {
+      transform: none;
+      box-shadow: var(--shadow);
     }
   }
 </style>
